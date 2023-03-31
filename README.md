@@ -16,16 +16,48 @@ Code release for Domain Adaptation with Source Subject Fusion (SFDA)
 --data
   --pressure1
     --train
+      --subject3
+      ...
+      --subject50
+      --list.txt
     --test
+      --subject1
+      ...
+      --subject46
+      --list.txt
   --pressure2
     --train
+      --subject1
+      ...
+      --subject48
+      --list.txt
     --test
+      --subject3
+      ...
+      --subject50
+      --list.txt
   --pressure3
     --train
+      --subject1
+      ...
+      --subject50
+      --list.txt
     --test
+      --subject6
+      ...
+      --subject48
+      --list.txt
   --pressure4
     --train
+      --subject1
+      ...
+      --subject50
+      --list.txt
     --test
+      --subject10
+      ...
+      --subject47
+      --list.txt
 ```
        
 - write your config file
