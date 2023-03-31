@@ -9,8 +9,7 @@ Code release for Domain Adaptation with Source Subject Fusion (SFDA)
 
 ## Usage
 
-- download datasets from https://github.com/scut-bds/PlantPre
-  **[A Dataset for Falling Risk Assessment of the Elderly using Wearable Plantar Pressure(BIBM 2022)](https://doi.org/10.1109/BIBM55620.2022.9995052)** 
+- download datasets from **[A Dataset for Falling Risk Assessment of the Elderly using Wearable Plantar Pressure(BIBM 2022)](https://doi.org/10.1109/BIBM55620.2022.9995052)** 
 
 - divide datasets to MSST setting as the paper instructed
    --data
