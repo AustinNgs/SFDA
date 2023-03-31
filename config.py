@@ -1,9 +1,8 @@
 import yaml
 import easydict
 from os.path import join
-
 import sys
-sys.path[0] = '/home/lab-wu.shibin/dann'
+sys.path[0] = '/home/lab-wu.shibin/SFDA'
 
 class Dataset:
     def __init__(self, path, domains, files, prefix):
@@ -15,9 +14,9 @@ class Dataset:
 
 
 import argparse
-parser = argparse.ArgumentParser(description='Code for *Universal Domain Adaptation*',
+parser = argparse.ArgumentParser(description='Code for *SFDA*',
                                  formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument('--config', type=str, default='pressure-train-config.yaml', help='/home/lab-wu.shibin/dann')
+parser.add_argument('--config', type=str, default='pressure-train-config.yaml', help='/home/lab-wu.shibin/SFDA')
 
 args = parser.parse_args()
 
@@ -30,7 +29,9 @@ save_config = yaml.load(open(config_file), Loader=yaml.FullLoader)
 args = easydict.EasyDict(args)
 
 dataset = None
-if args.data.dataset.name == 'pressure3':
+
+# Modify the dataset name here to follow different MSST settings
+if args.data.dataset.name == 'pressure1':
     dataset = Dataset(
     path=args.data.dataset.root_path,
     domains=['train', 'test'],
