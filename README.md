@@ -14,16 +14,16 @@ Code release for Domain Adaptation with Source Subject Fusion (SFDA)
 - divide datasets to MSST setting as the paper instructed
 ```
 --data
-  --P1
+  --pressure1
     --train
     --test
-  --P2
+  --pressure2
     --train
     --test
-  --P3
+  --pressure3
     --train
     --test
-  --P4
+  --pressure4
     --train
     --test
 ```
