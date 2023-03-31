@@ -1,30 +1,11 @@
-#from easydl import *
 import torch
 import numpy as np
 import sys
 
-sys.path[0] = '/home/lab-wu.shibin/dann'
+sys.path[0] = '/home/lab-wu.shibin/SFDA'
 
 def reverse_sigmoid(y):
     return torch.log(y / (1.0 - y + 1e-10) + 1e-10)
-
-
-def get_source_share_weight(domain_out, before_softmax, domain_temperature=1.0, class_temperature=10.0):
-    before_softmax = before_softmax / class_temperature
-    after_softmax = torch.nn.Softmax(-1)(before_softmax)
-    domain_logit = reverse_sigmoid(domain_out)
-    domain_logit = domain_logit / domain_temperature
-    domain_out = torch.nn.Sigmoid()(domain_logit)
-    
-    entropy = torch.sum(- after_softmax * torch.log(after_softmax + 1e-10), dim=1, keepdim=True)
-    entropy_norm = entropy / np.log(after_softmax.size(1))
-    weight = entropy_norm - domain_out
-    weight = weight.detach()
-    return weight
-
-
-def get_target_share_weight(domain_out, before_softmax, domain_temperature=1.0, class_temperature=10.0):
-    return - get_source_share_weight(domain_out, before_softmax, domain_temperature, class_temperature)
 
 
 def normalize_weight(x):
