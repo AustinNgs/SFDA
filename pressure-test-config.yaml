@@ -15,7 +15,7 @@ model:
   pretrained_model:  # /path/to/pretrained/model
 
 train:
-  min_step: 20000 # minimum steps to run. run epochs until it exceeds the minStep， 20000
+  min_step: 20000 # minimum steps to run. run epochs until it exceeds the minStep
   iters_per_epoch: 100
   lr: 0.001 # learning rate for new layers. learning rate for finetune is 1/10 of lr
   weight_decay: 0.002
