@@ -17,20 +17,16 @@ Code release for Domain Adaptation with Source Subject Fusion (SFDA)
   --P1
     --train
     --test
+  --P2
+    --train
+    --test
+  --P3
+    --train
+    --test
+  --P4
+    --train
+    --test
 ```
-   - data
-    -- P1
-     --- train
-     --- test
-     -P2
-       -train
-       -test
-     -P3
-       -train
-       -test
-     -P4
-       -train
-       -test
        
 - write your config file
 
