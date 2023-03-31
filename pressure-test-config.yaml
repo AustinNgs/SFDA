@@ -1,7 +1,7 @@
 data:
   dataset:
-    name: pressure3 # choices are ['office', 'officehome', 'caltech-imagenet', 'visda2017']
-    root_path: /home/lab-wu.shibin/dann/data/pressure3 # /path/to/dataset/root
+    name: pressure1 # choices are ['pressure1', 'pressure2', 'pressure3', 'pressure4']
+    root_path: /home/lab-wu.shibin/SFDA/data/pressure1 # /path/to/dataset/root
     source: 0 # source domain index
     target: 1 # target domain index
 
@@ -11,8 +11,8 @@ data:
     batch_size: 32 # batch_size for source domain and target domain respectively
 
 model:
-  base_model: vgg16 # choices=['resnet50', 'vgg16','inception_v3', 'pnasnet5large','wide_resnet101_2','nasnetalarge','googlenet']
-  pretrained_model:  #/home/lab-wu.shibin/dann/inception_v3_google-1a9a5a14.pth # /path/to/pretrained/model
+  base_model: resnet50 # choices=['resnet50', 'vgg16']
+  pretrained_model:  # /path/to/pretrained/model
 
 train:
   min_step: 20000 # minimum steps to run. run epochs until it exceeds the minStep， 20000
@@ -24,8 +24,7 @@ train:
 test:
   test_interval: 500 # interval of two continuous test phase
   test_only: True # test a given model and exit
-  resume_file: /home/lab-wu.shibin/dann/log/Aug19_12-26-31/current.pkl
-  #w_0: -1 # hyper-parameter w_0
+  resume_file: /home/lab-wu.shibin/SFDA/log/saving_time/saving_model
 
 misc:
   gpus: 1 # how many GPUs to be used, 0 indicates CPU only
