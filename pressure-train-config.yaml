@@ -1,0 +1,36 @@
+data:
+  dataset:
+    name: pressure3 # choices are ['office', 'officehome', 'caltech-imagenet', 'visda2017']
+    root_path: /home/lab-wu.shibin/dann/data/pressure3 # /path/to/dataset/root
+    source: 0 # source domain index
+    target: 1 # target domain index
+    
+
+  dataloader:
+    class_balance: true #
+    data_workers: 4 # how many workers to use for train dataloaders
+    batch_size: 16 # batch_size for source domain and target domain respectively
+
+model:
+  base_model: vgg16 # choices=['resnet50', 'vgg16','inception_v3', 'pnasnet5large','wide_resnet101_2','nasnetalarge','googlenet']
+  pretrained_model: # /home/lab-wu.shibin/dann/inception_v3_google-1a9a5a14.pth # /path/to/pretrained/model
+
+train:
+  min_step: 1000 # minimum steps to run. run epochs until it exceeds the minStep， 20000
+  #iters_per_epoch: 10
+  lr: 0.001 #0.001 # learning rate for new layers. learning rate for finetune is 1/10 of lr
+  weight_decay: 0.002 #0.002 #0.002 #0.0005
+  momentum: 0.95 #0.9
+
+test:
+  test_interval: 2 # interval of two continuous test phase, 500
+  test_only: False # test a given model and exit
+  resume_file: '' # model to test
+  #w_0: -0.5 # hyper-parameter w_0
+
+misc:
+  gpus: 1 # how many GPUs to be used, 0 indicates CPU only
+
+log:
+  root_dir: log # the log directory (log directory will be {root_dir}/{method}/time/)
+  log_interval: 100 # steps to log scalars
