@@ -12,19 +12,19 @@ Code release for Domain Adaptation with Source Subject Fusion (SFDA)
 - download datasets from **[A Dataset for Falling Risk Assessment of the Elderly using Wearable Plantar Pressure(BIBM 2022)](https://doi.org/10.1109/BIBM55620.2022.9995052)** 
 
 - divide datasets to MSST setting as the paper instructed
-   --data
-     --P1
-       --train
-       --test
-     --P2
-       --train
-       --test
-     --P3
-       --train
-       --test
-     --P4
-       --train
-       --test
+   -data
+     -P1
+       -train
+       -test
+     -P2
+       -train
+       -test
+     -P3
+       -train
+       -test
+     -P4
+       -train
+       -test
        
 - write your config file
 
