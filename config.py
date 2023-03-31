@@ -31,7 +31,7 @@ args = easydict.EasyDict(args)
 dataset = None
 
 # Modify the dataset name here to follow different MSST settings
-if args.data.dataset.name == 'pressure1':
+if args.data.dataset.name == 'pressure1':  # choices=['pressure1', 'pressure2', 'pressure3', 'pressure4']
     dataset = Dataset(
     path=args.data.dataset.root_path,
     domains=['train', 'test'],
