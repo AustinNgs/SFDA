@@ -17,14 +17,23 @@ Code release for Domain Adaptation with Source Subject Fusion (SFDA)
 
 - `python main.py --config /path/to/your/config/yaml/file`
 
-- train (configurations in `officehome-train-config.yaml` are only for officehome dataset):
+- train
 
-  `python main.py --config officehome-train-config.yaml`
+  `python main.py --config pressure-train-config.yaml`
 
 - test
 
-  `python main.py --config officehome-test-config.yaml`
+  `python main.py --config pressure-test-config.yaml`
   
 - monitor (tensorboard required)
 
   `tensorboard --logdir .`
+  
+## Citation
+please cite:
+```
+
+```
+
+## Contact
+- austin_wushibin@163.com
