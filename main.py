@@ -7,7 +7,6 @@ from tqdm import tqdm
 import datetime
 import torch
 
-#是否在notebok中运行
 if is_in_notebook():
     from tqdm import tqdm_notebook as tqdm
 from torch import optim
@@ -18,7 +17,7 @@ cudnn.benchmark = True
 cudnn.deterministic = True
 
 import sys
-sys.path[0] = '/home/lab-wu.shibin/dann'
+sys.path[0] = '/home/lab-wu.shibin/SFDA'
 
 seed_everything()
 
@@ -93,7 +92,6 @@ if args.test.test_only:
     Sens_correct = 0
     low_risk_number = 0
     Spec_correct = 0
-    #定义counters
     counters = [AccuracyCounter() for x in range(args.train.num_class + 1)]
     with TrainingModeManager([feature_extractor, classifier, DAdiscriminator], train=False) as mgr, \
             Accumulator(['feature', 'predict_prob', 'label', 'domain_prob', 'before_softmax']) as target_accumulator, \
@@ -136,11 +134,7 @@ if args.test.test_only:
             counters[each_label].Ncorrect += 1.0
             number+=1
 
-    print(high_risk_number)
-    print(Sens_correct)
     print(f'Sensitivity is {Sens_correct/high_risk_number}')
-    print(low_risk_number)
-    print(Spec_correct)
     print(f'Specitivity is {Spec_correct/low_risk_number}')
     acc_tests = [x.reportAccuracy() for x in counters if not np.isnan(x.reportAccuracy())]
     acc_test = torch.ones(1, 1) * np.mean(acc_tests)
@@ -182,7 +176,7 @@ for epoch in range(args.train.min_step):
         idx_source = idx_source.cuda()  
         idx_target = idx_target.cuda() 
 
-        # =========================forward pass
+        # =============================forward pass
         im_source = im_source.cuda()
         im_target = im_target.cuda()
 
@@ -203,12 +197,12 @@ for epoch in range(args.train.min_step):
         adv_loss += nn.BCELoss()(domain_prob_discriminator_target_separate, torch.zeros_like(domain_prob_discriminator_target_separate))*0.5
 
         #lable classification loss
-        ce = nn.CrossEntropyLoss(reduction='none')(predict_prob_source, label_source)#*0.5
+        ce = nn.CrossEntropyLoss(reduction='none')(predict_prob_source, label_source)
         ce = torch.mean(ce, dim=0, keepdim=True)
         
         #source fusion loss
         do = nn.CrossEntropyLoss(reduction='none')(domain_prob_discriminator_source, idx_source)
-        do = torch.mean(do, dim=0, keepdim=True)#*0.1
+        do = torch.mean(do, dim=0, keepdim=True)
         
         with OptimizerManager(
                 [optimizer_finetune, optimizer_cls, optimizer_subjectfusion, optimizer_discriminator_separate]):
@@ -275,7 +269,6 @@ for epoch in range(args.train.min_step):
 
         acc_tests = [x.reportAccuracy() for x in counters if not np.isnan(x.reportAccuracy())]
         acc_test = torch.ones(1, 1) * np.mean(acc_tests)
-        print(acc_test)
         logger.add_scalar('Acc/acc_test',acc_test.item(), epoch)
 
         data = {
