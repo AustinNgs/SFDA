@@ -1,4 +1,4 @@
-# SFDA
+# SFDA: Domain Adaptation with Source Subject Fusion Based On Multi-source And Single-target Fall Risk Assessment
 Code release for Domain Adaptation with Source Subject Fusion (SFDA)
 
 ## Requirements
