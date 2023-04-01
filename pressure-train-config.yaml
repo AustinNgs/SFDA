@@ -16,7 +16,7 @@ model:
   bottle_neck_dim: 2048
 
 train:
-  min_step: 1000 # minimum steps to run. run epochs until it exceeds the minStep
+  min_step: 100 # minimum steps to run. run epochs until it exceeds the minStep
   lr: 0.001 # learning rate for new layers. learning rate for finetune is 1/10 of lr， choices=[0.01， 0.001]
   weight_decay: 0.002 # choices=[0.0005， 0.001, 0.002]
   momentum: 0.95
