@@ -7,9 +7,8 @@ data:
     
 
   dataloader:
-    class_balance: true #
     data_workers: 4 # how many workers to use for train dataloaders
-    batch_size: 16 # batch_size for source domain and target domain respectively
+    batch_size: 32 # batch_size for source domain and target domain respectively
 
 model:
   base_model: resnet50 # choices=['resnet50', 'vgg16']
@@ -17,8 +16,8 @@ model:
 
 train:
   min_step: 1000 # minimum steps to run. run epochs until it exceeds the minStep
-  lr: 0.001 #0.001 # learning rate for new layers. learning rate for finetune is 1/10 of lr
-  weight_decay: 0.002 # choices=[0.001, 0.002, 0.005]
+  lr: 0.001 # learning rate for new layers. learning rate for finetune is 1/10 of lr， choices=[0.01， 0.001]
+  weight_decay: 0.002 # choices=[0.0005， 0.001, 0.002]
   momentum: 0.95
 
 test:
