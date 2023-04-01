@@ -4,7 +4,7 @@ Code release for Domain Adaptation with Source Subject Fusion (SFDA)
 ## Requirements
 - python 3.6+
 - PyTorch 1.0
-
+- CUDA 10.2
 `pip install -r requirements.txt`
 
 ## Usage
