@@ -13,13 +13,17 @@ data:
 model:
   base_model: resnet50 # choices=['resnet50', 'vgg16']
   pretrained_model:  # /path/to/pretrained/model
+  bottle_neck_dim: 2048
 
 train:
   min_step: 20000 # minimum steps to run. run epochs until it exceeds the minStep
   iters_per_epoch: 100
   lr: 0.001 # learning rate for new layers. learning rate for finetune is 1/10 of lr
   weight_decay: 0.002
-  momentum: 0.9
+  momentum: 0.95
+  SF_weight: 1
+  DA_weight: 1
+  num_class: 2
 
 test:
   test_interval: 500 # interval of two continuous test phase
