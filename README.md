@@ -77,7 +77,7 @@ Code release for Domain Adaptation with Source Subject Fusion (SFDA)
 
   `tensorboard --logdir .`
 
-## Saved model
+## Checkpoint
 - Users could reproduce the results in **[Our paper](https://doi.org/10.1109/BIBM55620.2022.9995052)** by saved model from **[Baidu Netdisk](https://doi.org/10.1109/BIBM55620.2022.9995052)** 
   
 ## Citation
