@@ -1,6 +1,5 @@
 # SFDA: Domain Adaptation with Source Subject Fusion Based On Multi-source And Single-target Fall Risk Assessment
-- Code release for Domain Adaptation with Source Subject Fusion (SFDA)
-- Users are encouraged to implement other project or application through SFDA.
+Code release for Domain Adaptation with Source Subject Fusion (SFDA)
 
 ## Requirements
 - python 3.6+
@@ -18,48 +17,20 @@
 --data
   --pressure1
     --train/images
-      --subject3
-      ...
-      --subject50
-      --list.txt
     --test/images
-      --subject1
-      ...
-      --subject46
-      --list.txt
+
   --pressure2
     --train/images
-      --subject1
-      ...
-      --subject48
-      --list.txt
     --test/images
-      --subject3
-      ...
-      --subject50
-      --list.txt
+
   --pressure3
     --train/images
-      --subject1
-      ...
-      --subject50
-      --list.txt
     --test/images
-      --subject6
-      ...
-      --subject48
-      --list.txt
+
   --pressure4
     --train/images
-      --subject1
-      ...
-      --subject50
-      --list.txt
     --test/images
-      --subject10
-      ...
-      --subject47
-      --list.txt
+
 ```
        
 - write your config file
