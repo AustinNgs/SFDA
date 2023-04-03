@@ -1,6 +1,6 @@
 # SFDA: Domain Adaptation with Source Subject Fusion Based On Multi-source And Single-target Fall Risk Assessment
 - Code release for Domain Adaptation with Source Subject Fusion (SFDA)
-- Users are allower to implement other project or application through SFDA.
+- Users are encouraged to implement other project or application through SFDA.
 
 ## Requirements
 - python 3.6+
