@@ -1,5 +1,4 @@
 from easydl import *
-from numpy.lib.function_base import kaiser
 from csv2pic import *
 from net import *
 from lib import *

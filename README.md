@@ -3,7 +3,7 @@ Code release for Domain Adaptation with Source Subject Fusion (SFDA)
 
 ## Requirements
 - python 3.6+
-- PyTorch 1.0
+- PyTorch 1.4
 - CUDA 10.2
 
 `pip install -r requirements.txt`
@@ -76,6 +76,9 @@ Code release for Domain Adaptation with Source Subject Fusion (SFDA)
 - monitor (tensorboard required)
 
   `tensorboard --logdir .`
+
+## Saved model
+- Users could reproduce the results in **[Our paper](https://doi.org/10.1109/BIBM55620.2022.9995052)** by saved model from **[Baidu Netdisk](https://doi.org/10.1109/BIBM55620.2022.9995052)** 
   
 ## Citation
 please cite:
