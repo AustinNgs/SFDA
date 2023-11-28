@@ -51,7 +51,7 @@
   `tensorboard --logdir .`
 
 ## Checkpoint
-- Users could reproduce the results in **[Our paper](https://doi.org/10.1109/BIBM55620.2022.9995052)** by saved model from **[Baidu Netdisk](https://pan.baidu.com/s/1PIQNwAYq7nLStmo0TVncDA)** with password: sfda
+- Users could reproduce the results in **[Our paper](https://doi.org/10.1109/TNSRE.2023.3337861)** by saved model from **[Baidu Netdisk](https://pan.baidu.com/s/1PIQNwAYq7nLStmo0TVncDA)** with password: sfda
  
  
 ## Citation
