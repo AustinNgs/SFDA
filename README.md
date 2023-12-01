@@ -57,7 +57,7 @@
 ## Citation
 please cite:
 ```
-
+S. Wu, L. Shu, Z. Song and X. Xu, "SFDA: Domain Adaptation with Source Subject Fusion Based On Multi-source And Single-target Fall Risk Assessment," in IEEE Transactions on Neural Systems and Rehabilitation Engineering, doi: 10.1109/TNSRE.2023.3337861.
 ```
 
 ## Contact
