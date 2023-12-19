@@ -62,9 +62,9 @@ please cite:
   journal={IEEE Transactions on Neural Systems and Rehabilitation Engineering}, 
   title={SFDA: Domain Adaptation with Source Subject Fusion Based On Multi-source And Single-target Fall Risk Assessment}, 
   year={2023},
-  volume={},
+  volume={31},
   number={},
-  pages={1-1},
+  pages={4907-4920},
   doi={10.1109/TNSRE.2023.3337861}}
 ```
 
