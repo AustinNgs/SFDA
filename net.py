@@ -169,7 +169,7 @@ class AdversarialNetwork(nn.Module):
         self.grl = GradientReverseModule(lambda step: aToBSheduler(step, 0.0, 1.0, gamma=10, max_iter=10000))
 
     def forward(self, x):
-        out = [x]
+        x = self.grl(x)
         for module in self.main.children():
             x = module(x)
             out.append(x)
