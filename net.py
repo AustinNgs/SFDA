@@ -170,7 +170,5 @@ class AdversarialNetwork(nn.Module):
 
     def forward(self, x):
         x = self.grl(x)
-        for module in self.main.children():
-            x = module(x)
-            out.append(x)
+        out = self.main(x)
         return out
