@@ -14,6 +14,7 @@ model:
   base_model: resnet50 # choices=['resnet50', 'vgg16']
   pretrained_model: # /path/to/pretrained/model
   bottle_neck_dim: 2048
+  source_subject_no: #number of sub-dataset in Source Domain, which depends on your own settings
 
 train:
   min_step: 100 # minimum steps to run. run epochs until it exceeds the minStep
