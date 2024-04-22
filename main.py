@@ -62,7 +62,7 @@ class TotalNet(nn.Module):
         self.feature_extractor = model_dict[args.model.base_model](args.model.pretrained_model)
         self.classifier = CLS(self.feature_extractor.output_num(), args.train.num_class, bottle_neck_dim=args.model.bottle_neck_dim)
         self.subjectfusion = AdversarialNetwork(args.model.bottle_neck_dim,args.model.source_subject_no) 
-        self.DAdiscriminator = AdversarialNetwork(args.model.bottle_neck_dim,args.train.num_class)
+        self.DAdiscriminator = AdversarialNetwork(args.model.bottle_neck_dim,args.model.num_class)
 
     def forward(self, x):
         f = self.feature_extractor(x)
