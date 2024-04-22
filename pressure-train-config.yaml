@@ -15,6 +15,7 @@ model:
   pretrained_model: # /path/to/pretrained/model
   bottle_neck_dim: 2048
   source_subject_no: #number of sub-dataset in Source Domain, which depends on your own settings
+  num_class: 1
 
 train:
   min_step: 100 # minimum steps to run. run epochs until it exceeds the minStep
@@ -23,7 +24,7 @@ train:
   momentum: 0.95
   SF_weight: 1
   DA_weight: 1
-  num_class: 1
+  num_class: 2
 
 test:
   test_interval: 2 # interval of two continuous test phase
