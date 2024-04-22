@@ -103,7 +103,7 @@ if args.test.test_only:
             label = label.cuda()
             feature = feature_extractor.forward(im)
             feature, __, before_softmax, predict_prob = classifier.forward(feature) 
-            _,_,domain_prob = DAdiscriminator.forward(__)  
+            domain_prob = DAdiscriminator.forward(__)  
 
             for name in target_accumulator.names:
                 globals()[name] = variable_to_numpy(globals()[name])
@@ -185,9 +185,9 @@ for epoch in range(args.train.min_step):
         fc1_s, feature_source, fc2_s, predict_prob_source = classifier.forward(fc1_s)
         fc1_t, feature_target, fc2_t, predict_prob_target = classifier.forward(fc1_t)
 
-        _,_,domain_prob_discriminator_source = subjectfusion.forward(feature_source)
-        _,_,domain_prob_discriminator_source_separate = DAdiscriminator.forward(feature_source.detach())
-        _,_,domain_prob_discriminator_target_separate = DAdiscriminator.forward(feature_target.detach())
+        domain_prob_discriminator_source = subjectfusion.forward(feature_source)
+        domain_prob_discriminator_source_separate = DAdiscriminator.forward(feature_source.detach())
+        domain_prob_discriminator_target_separate = DAdiscriminator.forward(feature_target.detach())
 
         # ==============================compute loss
         #DA loss
@@ -247,7 +247,7 @@ for epoch in range(args.train.min_step):
 
                 feature = feature_extractor.forward(im)
                 feature, __, before_softmax, predict_prob = classifier.forward(feature)
-                _,_,domain_prob = DAdiscriminator.forward(__)
+                domain_prob = DAdiscriminator.forward(__)
 
                 for name in target_accumulator.names:
                     globals()[name] = variable_to_numpy(globals()[name])
