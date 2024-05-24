@@ -20,7 +20,7 @@ sys.path[0] = '/home/lab-wu.shibin/SFDA'
 
 seed_everything()
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "3"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 gpu_ids = [0]
 output_device = gpu_ids
 
@@ -67,8 +67,8 @@ class TotalNet(nn.Module):
     def forward(self, x):
         f = self.feature_extractor(x)
         f, _, __, y = self.classifier(f) 
-        d = self.subjectfusion(_)
-        d_0 = self.DAdiscriminator(_) 
+        _,d = self.subjectfusion(_)
+        d_0,_ = self.DAdiscriminator(_) 
         return y, d, d_0
 
 
@@ -103,7 +103,7 @@ if args.test.test_only:
             label = label.cuda()
             feature = feature_extractor.forward(im)
             feature, __, before_softmax, predict_prob = classifier.forward(feature) 
-            domain_prob = DAdiscriminator.forward(__)  
+            domain_prob,_ = DAdiscriminator.forward(__)  
 
             for name in target_accumulator.names:
                 globals()[name] = variable_to_numpy(globals()[name])
@@ -185,9 +185,9 @@ for epoch in range(args.train.min_step):
         fc1_s, feature_source, fc2_s, predict_prob_source = classifier.forward(fc1_s)
         fc1_t, feature_target, fc2_t, predict_prob_target = classifier.forward(fc1_t)
 
-        domain_prob_discriminator_source = subjectfusion.forward(feature_source)
-        domain_prob_discriminator_source_separate = DAdiscriminator.forward(feature_source.detach())
-        domain_prob_discriminator_target_separate = DAdiscriminator.forward(feature_target.detach())
+        _,domain_prob_discriminator_source = subjectfusion.forward(feature_source)
+        domain_prob_discriminator_source_separate,_ = DAdiscriminator.forward(feature_source.detach())
+        domain_prob_discriminator_target_separate,_ = DAdiscriminator.forward(feature_target.detach())
 
         # ==============================compute loss
         #DA loss
@@ -196,7 +196,7 @@ for epoch in range(args.train.min_step):
         adv_loss += nn.BCELoss()(domain_prob_discriminator_target_separate, torch.zeros_like(domain_prob_discriminator_target_separate))*0.5
 
         #label classification loss
-        ce = nn.CrossEntropyLoss(reduction='none')(predict_prob_source, label_source)
+        ce = nn.CrossEntropyLoss(reduction='none')(fc2_s, label_source)
         ce = torch.mean(ce, dim=0, keepdim=True)
         
         #source fusion loss
@@ -231,13 +231,13 @@ for epoch in range(args.train.min_step):
 
         sys.stdout.write('\r epoch: %d, [iter: %d / all %d], loss_cls: %f, loss_source_fusion: %f, loss_adaptation: %f' \
               % (epoch, i + 1, max(len(source_train_dl), len(target_train_dl)), ce.data.cpu().numpy(),
-                 do.data.cpu().numpy(),adv_loss.data.cpu().numpy().item()))
+                 args.train.SF_weight*do.data.cpu().numpy(),args.train.DA_weight*adv_loss.data.cpu().numpy().item()))
         sys.stdout.flush()
 
     if epoch % args.test.test_interval == 0:
         counters = [AccuracyCounter() for x in range(args.train.num_class + 1)]
-        with TrainingModeManager([feature_extractor, classifier, DAdiscriminator], train=False) as mgr, \
-                Accumulator(['feature', 'predict_prob', 'label', 'domain_prob', 'before_softmax']) as target_accumulator, \
+        with TrainingModeManager([feature_extractor, classifier], train=False) as mgr, \
+                Accumulator(['feature', 'predict_prob', 'label',  'before_softmax']) as target_accumulator, \
                 torch.no_grad():
          
             for i, (im, label, idx) in enumerate(tqdm(target_train_dl, desc='testing ')):  
@@ -247,7 +247,6 @@ for epoch in range(args.train.min_step):
 
                 feature = feature_extractor.forward(im)
                 feature, __, before_softmax, predict_prob = classifier.forward(feature)
-                domain_prob = DAdiscriminator.forward(__)
 
                 for name in target_accumulator.names:
                     globals()[name] = variable_to_numpy(globals()[name])
