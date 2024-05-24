@@ -158,17 +158,14 @@ class AdversarialNetwork(nn.Module):
             nn.ReLU(inplace=True),
             nn.Dropout(0.5),
             nn.Linear(2048,1024)
-            #nn.ReLU(inplace=True),
-            #nn.Dropout(0.5)
         )
-        self.dis = nn.Sequential(
-            nn.Linear(1024, out_dim),
-            nn.Sigmoid()
-        )
+        self.dis = nn.Linear(1024, out_dim)
+        self.dis1 = nn.Sigmoid()
         self.main = nn.Sequential(self.fc, self.dis)
         self.grl = GradientReverseModule(lambda step: aToBSheduler(step, 0.0, 1.0, gamma=10, max_iter=10000))
 
     def forward(self, x):
         x = self.grl(x)
         out = self.main(x)
-        return out
+        out1 = self.dis1(out)
+        return out1, out
